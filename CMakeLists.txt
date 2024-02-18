@@ -5,6 +5,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMake/Modules/")
 
 find_package(glfw3 REQUIRED)
 find_package(glm REQUIRED)
+find_package(assimp REQUIRED)
 
 set(PROJECT_SOURCE_DIR "${CMAKE_SOURCE_DIR}/src")
 
@@ -35,4 +36,7 @@ target_include_directories(glad PUBLIC ${EXT_INCLUDE_DIR})
 
 include_directories(${EXT_INCLUDE_DIR})
 
-target_link_libraries(${PROJECT_NAME} PUBLIC glfw glad PRIVATE ${CMAKE_DL_LIBS})
+add_subdirectory(src)
+
+target_link_libraries(${PROJECT_NAME} PUBLIC glfw glad assimp PRIVATE ${CMAKE_DL_LIBS})
+#target_link_libraries(${PROJECT_NAME} PUBLIC JAM_LIB)
